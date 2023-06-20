@@ -37,10 +37,10 @@ export class CalculatorComponent implements OnInit, OnDestroy {
   public showAttackOrder = this.localStorageService.get('showAttackOrder');
   public useJPArt = this.characterService.useJPArt;
   public rememberMyTeam = this.localStorageService.get('rememberMyTeam');
-  
+
   public goodParty: Party;
   public evilParty: Party;
-  
+
   public events: Array<TargetEvent> = [];
 
   private interval: any;
@@ -79,7 +79,7 @@ export class CalculatorComponent implements OnInit, OnDestroy {
           positionInParty: unusedIndex,
           character: selectedCharacter,
         }
-  
+
         party.tiles[unusedIndex] = updatedTile;
         this.matrix[updatedTile.id] = updatedTile;
         this.syncMyTeam();
@@ -141,7 +141,7 @@ export class CalculatorComponent implements OnInit, OnDestroy {
           const stringed = atob(param.get('share'));
           const partyData = stringed.split(';');
           goodPartyString = partyData[0];
-          evilPartyString = partyData[1]; 
+          evilPartyString = partyData[1];
         } catch (error) {
           console.error('Errored trying to work with share param!', error)
         }
@@ -171,13 +171,14 @@ export class CalculatorComponent implements OnInit, OnDestroy {
     })
 
     this.bgControl.valueChanges.subscribe((value) => {
+      // @ts-ignore
       this.languageService.changeBg(value);
     });
 
     if (this.showAttackOrder === null) {
       this.showAttackOrder = true;
       this.showAttackOrderClick();
-    } 
+    }
 
     // Hacky stuff, to fix lines
     let timeout: any;
@@ -358,7 +359,7 @@ export class CalculatorComponent implements OnInit, OnDestroy {
         x: CalculatorComponent.returnPositionInLine(attacker.id),
         y: CalculatorComponent.returnPositionInColumn(attacker.id)
       }
-      
+
       const target: TileDistance = potentialTargets.reduce((distanceArr, m) => {
         const defenderPos: Coordinates = {
           x: CalculatorComponent.returnPositionInLine(m.id),
@@ -513,7 +514,7 @@ export class CalculatorComponent implements OnInit, OnDestroy {
           } else {
             tile = party.tiles[i];
           }
-          
+
           tile.character = character;
           tile.positionInParty = i;
           party.tiles[i] = tile;
@@ -541,14 +542,14 @@ export class CalculatorComponent implements OnInit, OnDestroy {
     })
   }
 
-  public helpBtnClick() {    
+  public helpBtnClick() {
     this.dialog.open(HelpDialogComponent, {
       width: dialogWidth,
       data: {}
     })
   }
 
-  public creditsBtnClick() {    
+  public creditsBtnClick() {
     this.dialog.open(CreditsDialogComponent, {
       width: dialogWidth,
       data: {

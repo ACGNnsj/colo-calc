@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { OverlayRef } from '@angular/cdk/overlay/overlay-ref'
+import { OverlayRef } from '@angular/cdk/overlay'
 import { ComponentPortal } from '@angular/cdk/portal';
 import { TooltipViewComponent } from './rich-tooltip.component';
 import { FlexibleConnectedPositionStrategy, Overlay } from '@angular/cdk/overlay';

@@ -118,5 +118,8 @@
       }
     }
   },
-  "defaultProject": "colo-calc"
+  "defaultProject": "colo-calc",
+  "cli": {
+    "analytics": false
+  }
 }
